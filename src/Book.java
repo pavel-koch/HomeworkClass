@@ -11,9 +11,12 @@ public class Book {
     }
 
     public void printBookData() {
-        System.out.println(this.bookTitle);
-        System.out.println(author.getFirstName() + " " + author.getSecondName());
-        System.out.println(this.publishingYear);
+        String title = getBookTitle();
+        String authors = author.getFirstName() + " " + author.getSecondName();
+        int year = getPublishingYear();
+        System.out.println(title);
+        System.out.println(authors);
+        System.out.println(year);
         System.out.println();
     }
     public Author getAuthor() {
