@@ -1,26 +1,18 @@
 import java.time.LocalDate;
+
 public class Book {
     private String bookTitle;
     private Author author;
     private int publishingYear;
 
-    public Book (String bookTitle, Author author, int publishingYear) {
+    public Book(String bookTitle, Author author, int publishingYear) {
         this.bookTitle = bookTitle;
         this.author = author;
         this.publishingYear = publishingYear;
     }
 
-    public void printBookData() {
-        String title = getBookTitle();
-        String authors = author.getFirstName() + " " + author.getSecondName();
-        int year = getPublishingYear();
-        System.out.println(title);
-        System.out.println(authors);
-        System.out.println(year);
-        System.out.println();
-    }
-    public Author getAuthor() {
-        return author;
+    public String getAuthor() {
+        return author.toString();
     }
 
     public int getPublishingYear() {
@@ -39,5 +31,25 @@ public class Book {
         }
         this.publishingYear = publishingYear;
     }
+
+    @Override
+    public String toString() {
+        return "Название книги: " + bookTitle + "\n" + author + "\nГод издания: " + publishingYear;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        Book b1 = (Book) other;
+        return bookTitle.equals(b1.bookTitle) && author.equals(b1.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(author);
+    }
+
 
 }

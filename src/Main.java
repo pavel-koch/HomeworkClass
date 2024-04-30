@@ -5,10 +5,13 @@ public class Main {
         System.out.println("author1.getSecondName() = " + author1.getSecondName());
         Book book1 = new Book("Black Tower", author1, 2004);
         Book book2 = new Book("Black Holes", author2, 2016);
-        book2.printBookData();
-        book1.printBookData();
+        Book book3 = new Book("Black Holes", author2, 2014);
+        System.out.println(book1);
+        System.out.println(book2);
         book1.setPublishingYear(2020);
-        book1.printBookData();
+        System.out.println(book1);
+        System.out.println(author1.equals(author1));
+        System.out.println(book2.equals(book3));
 
     }
 }
