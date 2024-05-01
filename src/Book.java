@@ -39,16 +39,25 @@ public class Book {
 
     @Override
     public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
         if (this.getClass() != other.getClass()) {
             return false;
         }
         Book b1 = (Book) other;
-        return bookTitle.equals(b1.bookTitle) && author.equals(b1.author);
+        if (bookTitle == null && b1.bookTitle == null && author.equals(b1.author) && publishingYear == 0 && b1.publishingYear == 0) {
+            return true;
+        }
+        return bookTitle.equals(b1.bookTitle) && author.equals(b1.author) && publishingYear == b1.publishingYear;
     }
 
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(author);
+        if (bookTitle == null || author == null || publishingYear == 0) {
+            return 0;
+        }
+        return (bookTitle.hashCode() + author.hashCode() + publishingYear);
     }
 
 
